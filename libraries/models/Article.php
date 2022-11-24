@@ -1,17 +1,15 @@
 <?php
 
-require_once('libraries/database.php');
+require_once('libraries/models/Model.php');
 
-class Article
+class Article extends Model
 {
     /**
      * @return bool|array
      */
     public function findAll(): bool|array
     {
-        $pdo = getPdo();
-
-        $resultats = $pdo->query('SELECT * FROM articles ORDER BY created_at DESC');
+        $resultats = $this->pdo->query('SELECT * FROM articles ORDER BY created_at DESC');
         return $resultats->fetchAll();
     }
 
@@ -21,9 +19,7 @@ class Article
      */
     public function find(int $id): array
     {
-        $pdo = getPdo();
-
-        $query = $pdo->prepare("SELECT * FROM articles WHERE id = :article_id");
+        $query = $this->pdo->prepare("SELECT * FROM articles WHERE id = :article_id");
         $query->execute(['article_id' => $id]);
         return $query->fetch();
     }
@@ -34,9 +30,7 @@ class Article
      */
     public function delete(int $id): void
     {
-        $pdo = getPdo();
-
-        $query = $pdo->prepare('DELETE FROM articles WHERE id = :id');
+        $query = $this->pdo->prepare('DELETE FROM articles WHERE id = :id');
         $query->execute(['id' => $id]);
     }
 }
