@@ -27,6 +27,4 @@ $articles = $resultats->fetchAll();
  * 3. Affichage
  */
 $pageTitle = "Accueil";
-render('articles/show', compact('pageTitle','articles'));
-
-require('templates/layout.html.php');
+render('articles/index', compact('pageTitle','articles'));
