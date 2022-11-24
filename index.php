@@ -1,5 +1,4 @@
 <?php
-
 /**
  * CE FICHIER A POUR BUT D'AFFICHER LA PAGE D'ACCUEIL !
  * 
@@ -7,16 +6,14 @@
  * puis on va boucler dessus pour afficher chacun d'entre eux
  */
 
+require_once('libraries/database.php');
 /**
  * 1. Connexion à la base de données avec PDO
  * Attention, on précise ici deux options :
  * - Le mode d'erreur : le mode exception permet à PDO de nous prévenir violament quand on fait une connerie ;-)
  * - Le mode d'exploitation : FETCH_ASSOC veut dire qu'on exploitera les données sous la forme de tableaux associatifs
  */
-$pdo = new PDO('mysql:host=localhost;dbname=blogpoo;charset=utf8', 'root', 'Af45!qp$', [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-]);
+$pdo = getPdo();
 
 /**
  * 2. Récupération des articles
