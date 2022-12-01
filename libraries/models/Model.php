@@ -1,10 +1,11 @@
 <?php
 
+namespace Models;
 require_once('libraries/database.php');
 
 abstract class Model
 {
-    protected PDO $pdo;
+    protected \PDO $pdo;
     protected string $table;
 
     public function __construct()
