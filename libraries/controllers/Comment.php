@@ -4,13 +4,11 @@ namespace Controllers;
 require_once('libraries/utils.php');
 require_once('libraries/models/Article.php');
 require_once('libraries/models/Comment.php');
+require_once('libraries/controllers/Controller.php');
 
-class Comment
+class Comment extends Controller
 {
-    public function __construct()
-    {
-        $this->model = new \Models\Comment();
-    }
+    protected string $modelName = \Models\Comment::class;
 
     /**
      * @return void
