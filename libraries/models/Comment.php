@@ -4,6 +4,8 @@ require_once('libraries/models/Model.php');
 
 class Comment extends Model
 {
+    protected string $table = "comments";
+
     /**
      * @param int $article_id
      * @return bool|array
@@ -13,28 +15,6 @@ class Comment extends Model
         $query = $this->pdo->prepare("SELECT * FROM comments WHERE article_id = :article_id");
         $query->execute(['article_id' => $article_id]);
         return $query->fetchAll();
-    }
-
-    /**
-     * @param int $id
-     * @return mixed
-     */
-    public function find(int $id)
-    {
-        $query = $this->pdo->prepare('SELECT * FROM comments WHERE id = :id');
-        $query->execute(['id' => $id]);
-
-        return $query->fetch();
-    }
-
-    /**
-     * @param int $id
-     * @return void
-     */
-    public function delete(int $id): void
-    {
-        $query = $this->pdo->prepare('DELETE FROM comments WHERE id = :id');
-        $query->execute(['id' => $id]);
     }
 
     /**
