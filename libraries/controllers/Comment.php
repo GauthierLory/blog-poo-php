@@ -1,8 +1,8 @@
 <?php
 
 namespace Controllers;
-require_once('libraries/utils.php');
-require_once('libraries/autoload.php');
+
+use JetBrains\PhpStorm\NoReturn;
 
 class Comment extends Controller
 {
@@ -11,7 +11,7 @@ class Comment extends Controller
     /**
      * @return void
      */
-    public function insert(): void
+    #[NoReturn] public function insert(): void
     {
         $articleModel = new \Models\Article();
 
@@ -41,7 +41,7 @@ class Comment extends Controller
 
         $this->model->insert($author, $content, $article_id);
 
-        redirect("article.php?id=" . $article_id);
+        \Http::redirect("article.php?id=" . $article_id);
     }
 
     /**
@@ -63,6 +63,6 @@ class Comment extends Controller
         $article_id = $commentaire['article_id'];
         $this->model->delete($id);
 
-        redirect("article.php?id=" . $article_id);
+        \Http::redirect("article.php?id=" . $article_id);
     }
 }

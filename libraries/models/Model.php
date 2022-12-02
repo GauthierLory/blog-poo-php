@@ -2,6 +2,7 @@
 
 namespace Models;
 
+
 abstract class Model
 {
     protected \PDO $pdo;
@@ -9,7 +10,7 @@ abstract class Model
 
     public function __construct()
     {
-        $this->pdo = getPdo();
+        $this->pdo = \Database::getPdo();
     }
 
     /**
