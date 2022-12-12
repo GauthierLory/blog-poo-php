@@ -13,10 +13,9 @@ class Database
      */
     public static function getPdo (): PDO
     {
-    $pdo = new PDO('mysql:host=localhost;dbname=blogpoo;charset=utf8', 'root', '', [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-        ]);
+        $user = 'root';
+        $pass = 'example';
+        $pdo = new PDO('mysql:host=192.168.1.83;port=3306;dbname=blogpoo', $user, $pass);
 
         return $pdo;
     }
