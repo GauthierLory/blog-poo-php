@@ -1,11 +1,5 @@
 <?php
 
-// classic way
-//$db = new Database();
-//$pdo = $db->getPdo();
-// to static => on call la methode sur la classe et pas sur l'objet
-//$pdo = Database::getPdo();
-
 class Database
 {
     /**

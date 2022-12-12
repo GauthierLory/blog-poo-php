@@ -2,8 +2,6 @@
 
 namespace Controllers;
 
-//require_once('libraries/utils.php');
-
 class Article extends Controller
 {
     protected string $modelName = \Models\Article::class;
